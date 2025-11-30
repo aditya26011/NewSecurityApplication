@@ -32,7 +32,7 @@ public class JwtService {
       return   Jwts.builder()
                 .subject(user.getId().toString())// used to identify the user
                 .claim("email", user.getEmail())//key-value pair
-                .claim("roles", Set.of("ADMIN","USER"))
+                .claim("roles", user.getRoles().toString())// get roles
                 .issuedAt(new Date())
                 .expiration(new Date(System.currentTimeMillis()+1000 *60))
                 .signWith(getSecretKey())
