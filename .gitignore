@@ -31,3 +31,25 @@ build/
 
 ### VS Code ###
 .vscode/
+
+# ================================
+# Spring Boot / Maven Wrapper
+# ================================
+.mvn/
+mvnw
+mvnw.cmd
+
+# ================================
+# Sensitive config files
+# ================================
+# Don’t commit these — they can contain passwords or API keys
+application.properties
+application.yml
+
+# ================================
+# Environment & OS files
+# ================================
+.env
+*.swp
+*.swo
+Thumbs.db
