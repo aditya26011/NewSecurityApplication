@@ -2,6 +2,7 @@ package com.coding.security.securityApplication.config;
 
 
 
+import com.coding.security.securityApplication.entity.enums.Permissions;
 import com.coding.security.securityApplication.filters.JwtAuthFilter;
 import com.coding.security.securityApplication.handlers.OAuth2SuccessHandler;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +17,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.coding.security.securityApplication.entity.enums.Permissions.*;
 import static com.coding.security.securityApplication.entity.enums.Roles.*;
 
 @Configuration
@@ -39,6 +41,14 @@ public class WebSecurityConfig {
                                         .requestMatchers(publicRoutes).permitAll()
                                         .requestMatchers(HttpMethod.GET,"/posts/**").permitAll()
                                         .requestMatchers(HttpMethod.POST,"/posts/**").hasAnyRole(ADMIN.name(), CREATOR.name())
+                                        .requestMatchers(HttpMethod.POST,"/posts/**")
+                                        .hasAuthority(POST_CREATE.name())
+                                        .requestMatchers(HttpMethod.GET,"/posts/**")
+                                        .hasAuthority(POST_VIEW.name())
+                                        .requestMatchers(HttpMethod.PUT,"/posts/**")
+                                        .hasAuthority(POST_UPDATE.name())
+                                        .requestMatchers(HttpMethod.DELETE,"/post/**")
+                                        .hasAuthority(POST_DELETE.name())
                                 .anyRequest().authenticated())
                 .csrf(CsrfConfig->CsrfConfig.disable())
                 .sessionManagement(sessionConfig->
