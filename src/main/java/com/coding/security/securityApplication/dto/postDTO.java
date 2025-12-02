@@ -13,4 +13,6 @@ public class postDTO {
     private String title;
 
     private String description;
+
+    private UserDTO author;
 }
