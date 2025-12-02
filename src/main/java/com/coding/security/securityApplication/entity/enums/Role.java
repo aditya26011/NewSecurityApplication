@@ -1,6 +1,6 @@
 package com.coding.security.securityApplication.entity.enums;
 
-public enum Roles {
+public enum Role {
     USER,
     ADMIN,
     CREATOR

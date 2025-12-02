@@ -1,7 +1,7 @@
 package com.coding.security.securityApplication.entity;
 
 import com.coding.security.securityApplication.entity.enums.Permissions;
-import com.coding.security.securityApplication.entity.enums.Roles;
+import com.coding.security.securityApplication.entity.enums.Role;
 import com.coding.security.securityApplication.utils.PermissionMapping;
 import jakarta.persistence.*;
 import lombok.*;
@@ -35,7 +35,7 @@ public class User implements UserDetails {
 
    @ElementCollection(fetch = FetchType.EAGER) //since we are using set we need to use ElementCollection
    @Enumerated(EnumType.STRING)
-   private Set<Roles> roles;
+   private Set<Role> roles;
 
 
     @Override
